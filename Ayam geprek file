@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayam Geprek Mantap</title>
+<style>
+body{font-family:Arial;margin:0;background:#f5f5f5}
+header{background:#d62828;color:white;padding:15px;text-align:center}
+.container{padding:20px}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.card{background:white;padding:15px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+button{background:#f77f00;border:none;padding:10px 15px;color:white;border-radius:5px;cursor:pointer}
+button:hover{background:#d62828}
+.order{margin-top:20px;background:white;padding:15px;border-radius:10px}
+input,textarea{width:100%;padding:8px;margin-top:5px;margin-bottom:10px}
+</style>
+</head>
+<body><header>
+<h1>Ayam Geprek Mantap</h1>
+<p>Pedasnya Bikin Nagih!</p>
+</header><div class="container"><h2>Menu</h2>
+<div class="menu">
+<div class="card">
+<h3>Ayam Geprek Original</h3>
+<p>Rp15.000</p>
+<button onclick="addOrder('Ayam Geprek Original')">Pesan</button>
+</div><div class="card">
+<h3>Ayam Geprek Keju</h3>
+<p>Rp18.000</p>
+<button onclick="addOrder('Ayam Geprek Keju')">Pesan</button>
+</div><div class="card">
+<h3>Ayam Geprek Mozzarella</h3>
+<p>Rp22.000</p>
+<button onclick="addOrder('Ayam Geprek Mozzarella')">Pesan</button>
+</div>
+</div><div class="order">
+<h2>Form Pemesanan</h2>
+<form onsubmit="sendOrder(event)">
+<label>Nama</label>
+<input type="text" id="nama" required><label>Alamat</label>
+
+<textarea id="alamat" required></textarea><label>Pesanan</label> <input type="text" id="pesanan" readonly>
+
+<button type="submit">Kirim Pesanan</button>
+
+</form>
+</div></div><script>
+function addOrder(menu){
+ document.getElementById('pesanan').value = menu;
+}
+
+function sendOrder(e){
+ e.preventDefault();
+ const nama=document.getElementById('nama').value;
+ const alamat=document.getElementById('alamat').value;
+ const pesanan=document.getElementById('pesanan').value;
+ 
+ const message=`Halo, saya ${nama}%0ASaya pesan: ${pesanan}%0AAlamat: ${alamat}`;
+ window.open(`https://wa.me/6280000000000?text=${message}`);
+}
+</script></body>
+</html>
